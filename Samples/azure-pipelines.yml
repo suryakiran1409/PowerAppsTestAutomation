@@ -3,15 +3,15 @@
 name: PowerAppsTestAutomation-$(date:yyyyMMdd)$(rev:.r)
 
 resources:
-  repositories:
+  repositories: 
     - repository: PowerAppsTestAutomation
       type: github
       # GitHub Repo(e.g. <FORK>/PowerAppsTestAutomation)
       # Recommended to Fork or Duplicate if custom auth flows are required
-      name: microsoft/PowerAppsTestAutomation
+      name: suryakiran1409/PowerAppsTestAutomation
       ref: master
       # Name of the GitHub OAuth ADO Service Connection
-      endpoint: <ADO GitHub OAuth Service Connection Name>
+      endpoint: github.com_suryakiran1409 #<ADO GitHub OAuth Service Connection Name>
 
 parameters:
  - name: image
@@ -56,7 +56,7 @@ jobs:
     value: true
     # FileName where TestAutomationURLs are stored in JSON format
   - name: TestUrlFileName 
-    value: TestAutomationURLs.json
+    value: TestURLs.json
     # Project name of repo containing TestAutomationURLs (spaces should be encoded as %20)
     # Example: Contoso Test Framework --> Contoso%20Test%20Framework
   - name: LocalProjectName
@@ -73,6 +73,6 @@ jobs:
       OnlineUrl: $(PortalUrl)
       BrowserType: ${{ parameters.BrowserType }}
       # File location format is /s/TeamProjectName/FilePathToTestAutomationURLs.json
-      TestAutomationURLFilePath: $(Build.SourcesDirectory)\$(LocalProjectName)\Samples\$(TestUrlFileName)
+      TestAutomationURLFilePath: https://github.com/suryakiran1409/PowerAppsTestAutomation/TestURLs.json #$(Build.SourcesDirectory)\$(LocalProjectName)\Samples\$(TestUrlFileName)
       UsePrivateMode: $(PrivateMode)
       LoginMethod: ${{ parameters.LoginMethod }}
